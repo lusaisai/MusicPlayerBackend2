@@ -1,0 +1,394 @@
+[
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "问世间情是何物 直教生死相许",
+      "poet": "元好问"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "东边日出西边雨 道是无晴却有晴",
+      "poet": "刘禹锡"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "举杯邀明月 对影成三人",
+      "poet": "李白"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "曾经沧海难为水 除却巫山不是云",
+      "poet": "元稹"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "抽刀断水水更流 举杯消愁愁更愁",
+      "poet": "李白"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "回眸一笑百媚生 六宫粉黛无颜色",
+      "poet": "白居易"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "七月七日长生殿 夜半无人私语时",
+      "poet": "白居易"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "在天愿作比翼鸟 在地愿为连理枝",
+      "poet": "白居易"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "天长地久有时尽 此恨绵绵无绝期",
+      "poet": "白居易"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "同是天涯沦落人 相逢何必曾相识",
+      "poet": "白居易"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "长风破浪会有时 直挂云帆济沧海",
+      "poet": "李白"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "人生得意须尽欢 莫使金樽空对月",
+      "poet": "李白"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "天生我材必有用 千金散尽还复来",
+      "poet": "李白"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "此情可待成追忆 只是当时已惘然",
+      "poet": "李商隐"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "身无彩凤双飞翼 心有灵犀一点通",
+      "poet": "李商隐"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "相见时难别亦难 东风无力百花残",
+      "poet": "李商隐"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "天阶夜色凉如水 坐看牵牛织女星",
+      "poet": "杜牧"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "嫦娥应悔偷灵药 碧海青天夜夜心",
+      "poet": "李商隐"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "花开堪折直须折 莫待无花空折枝",
+      "poet": "杜秋娘"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "对酒当歌 人生几何",
+      "poet": "曹操"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "盈盈一水间 脉脉不得语",
+      "poet": "古诗十九首"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "明月几时有 把酒问青天 不知天上宫阙 今夕是何年",
+      "poet": "苏轼"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "人有悲欢离合 月有阴晴圆缺 此事古难全 但愿人长久 千里共婵娟",
+      "poet": "苏轼"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "春色三分 二分尘土 一分流水 细看来 不是杨花 点点是 离人泪",
+      "poet": "苏轼"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "花自飘零水自流 一种相思 两处闲愁 此情无计可消除 才下眉头 却上心头",
+      "poet": "李清照"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "月上柳梢头 人约黄昏后",
+      "poet": "朱淑真"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "众里寻他千百度 蓦然回首 那人却在 灯火阑珊处",
+      "poet": "辛弃疾"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "而今识尽愁滋味 欲说还休 欲说还休 却道天凉好个秋",
+      "poet": "辛弃疾"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "韶华不为少年留 恨悠悠 几时休",
+      "poet": "秦观"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "金风玉露一相逢 便胜却人间无数",
+      "poet": "秦观"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "柔情似水 佳期如梦 忍顾鹊桥归路 两情若是久长时 又岂在 朝朝暮暮",
+      "poet": "秦观"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "无情 任是无情也动人",
+      "poet": "秦观"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "今年花胜去年红 可惜明年花更好 知与谁同",
+      "poet": "欧阳修"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "泪眼问花花不语 乱红飞过秋千去",
+      "poet": "欧阳修"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "今宵剩把银釭照 犹恐相逢是梦中",
+      "poet": "晏几道"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "问君能有几多愁 恰似一江春水向东流",
+      "poet": "李煜"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "胭脂泪 相留醉 几时重 自是人生长恨水长东",
+      "poet": "李煜"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "剪不断 理还乱 是离愁 别是一般滋味在心头",
+      "poet": "李煜"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "别时容易见时难 流水落花春去也 天上人间",
+      "poet": "李煜"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "无可奈何花落去 似曾相识燕归来",
+      "poet": "晏殊"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "落花风雨更伤春 不如怜取眼前人",
+      "poet": "晏殊"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "昨夜西风凋碧树 独上高楼 望尽天涯路",
+      "poet": "晏殊"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "多情自古伤离别 更那堪 冷落清秋节",
+      "poet": "柳永"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "今宵酒醒何处 杨柳岸 晚风残月",
+      "poet": "柳永"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "此去经年 应是良辰好景虚设 便纵有千种风情 更与何人说",
+      "poet": "柳永"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "衣带渐宽终不悔 为伊消得人憔悴",
+      "poet": "柳永"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "当年不肯嫁春风 无端却被秋风误",
+      "poet": "贺铸"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "人生若只如初见 何事秋风悲画扇",
+      "poet": "安意如"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "来我怀里 或者 让我住进你的心里 默然相爱 寂静喜欢",
+      "poet": "仓央嘉措"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "黑夜一无所有 为何给我安慰",
+      "poet": "海子"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "你一会看我 一会看云 我觉得你看我时很远 你看云时很近",
+      "poet": "顾城"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "黛玉笑道: “偏是咬舌子爱说话,连个‘二’哥哥也叫不出来, 只是‘爱’哥哥‘爱’哥哥的.回来赶围棋儿,又该你闹幺‘爱’三四五了.”",
+      "poet": "红楼梦"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "每日家情思睡昏昏",
+      "poet": "林黛玉"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "黛玉道：“别理他，你先给我舀水去罢。”紫鹃笑道：“他是客，自然先倒了茶来再舀水去。”说着倒茶去了。宝玉笑道：“好丫头，‘若共你多情小姐同鸳帐，怎舍得叠被铺床？’”",
+      "poet": "红楼梦"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "夜月一帘幽梦 春风十里柔情",
+      "poet": "秦观"
+    }
+  },
+  {
+    "model" : "music.Poem",
+    "fields": {
+      "content": "你站在桥上看风景 看风景的人在楼上看你 明月装饰了你的窗子 你装饰了别人的梦",
+      "poet": "卞之琳"
+    }
+  }
+]
