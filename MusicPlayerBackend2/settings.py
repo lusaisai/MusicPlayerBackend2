@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 import socket
+from oss_settings import *
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -26,7 +27,7 @@ SECRET_KEY = '1^2)83#$j5sy(@llndu8%yc^cx3pn%r(t!if$po*i3ijtsdn_%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.im633.com']
 
 
 # Application definition
@@ -57,8 +58,7 @@ ROOT_URLCONF = 'MusicPlayerBackend2.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
-        ,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -105,11 +105,16 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 ENVIRONMENT = "production"
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+    r'/home/lusaisai/projects/MusicPlayer',
+)
 
 #  Development settings
 if socket.gethostname() == "WindowSai":
     DEBUG = True
     ENVIRONMENT = "development"
+    ENCODING = 'GBK'
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
