@@ -22,5 +22,7 @@ urlpatterns = [
     url(r'^artist/$', views.artists),
     url(r'^artist/(\d+)/$', views.artist),
     url(r'^album/(\d+)/$', views.album),
+    url(r'^lyrics/(\d+)/$', views.lyrics),
+    url(r'^reloadlyrics/(\d+)/$', views.reload_lyrics),
     url(r'^admin/', include(admin.site.urls)),
 ]

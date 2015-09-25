@@ -124,6 +124,5 @@ if socket.gethostname() == "WindowSai":
     MUSIC_DIR = r"D:\Music"
     MUSIC_RESOURCE_HTTP_PREFIX = r"http://localhost/resources/music/"
     STATICFILES_DIRS = (
-        os.path.join(BASE_DIR, "static"),
         r'C:\projects\MusicPlayer',
     )

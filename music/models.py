@@ -26,10 +26,10 @@ class Song(models.Model):
         return self.name
 
 
-class Lyric(models.Model):
-    artist = models.CharField(max_length=100)
-    album = models.CharField(max_length=100)
-    song = models.CharField(max_length=100)
+class Lyrics(models.Model):
+    artist_name = models.CharField(max_length=100, db_index=True)
+    album_name = models.CharField(max_length=100, db_index=True)
+    song_name = models.CharField(max_length=100, db_index=True)
     content = models.TextField()
 
     def __str__(self):
