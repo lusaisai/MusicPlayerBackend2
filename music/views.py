@@ -85,7 +85,6 @@ def random_songs(request, number):
             "pinyinName": "".join(lazy_pinyin(song.name)),
             "url": settings.MUSIC_RESOURCE_HTTP_PREFIX + "/".join([artist_name,album_name, song.file_name])
         })
-    print(songs)
     return JsonResponse(data)
 
 
