@@ -70,6 +70,25 @@ def album(request, album_id):
     return JsonResponse(data)
 
 
+def random_songs(request, number):
+    number = int(number)
+    data = {"songs": []}
+    songs = Song.objects.order_by('?')[:number]
+    for song in songs:
+        artist_name = song.album.artist.name
+        album_name = song.album.name
+        data["songs"].append({
+            "id": song.id,
+            "name": song.name,
+            "artistName": artist_name,
+            "albumName": album_name,
+            "pinyinName": "".join(lazy_pinyin(song.name)),
+            "url": settings.MUSIC_RESOURCE_HTTP_PREFIX + "/".join([artist_name,album_name, song.file_name])
+        })
+    print(songs)
+    return JsonResponse(data)
+
+
 # see http://gecimi.readthedocs.org/en/latest/ for source lrc data
 def lyrics(request, song_id, need_reloaded=False):
     try:
