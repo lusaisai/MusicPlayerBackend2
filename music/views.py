@@ -95,25 +95,26 @@ def reload_lyrics(request, song_id):
 
 
 def get_lrc_from_gecimi(song_name, artist_name):
-    prefix = u'http://geci.me/api/lyric/'
     lrc = ''
     try:
-        url = prefix + '%s/%s' % (song_name, artist_name)
-        lrc = download_lrc(url)
+        url_suffix = '%s/%s' % (song_name, artist_name)
+        lrc = download_lrc(url_suffix)
         if lrc != "":
             return lrc
         else:
-            url = prefix + '%s' % song_name
-            lrc = download_lrc(url)
+            url_suffix = '%s' % song_name
+            lrc = download_lrc(url_suffix)
     except IOError:
         pass
 
     return lrc
 
 
-def download_lrc(url):
+def download_lrc(url_suffix):
+    prefix = 'http://geci.me/api/lyric/'
     lrc = ''
-    response = urllib2.urlopen(url.encode('utf-8'), timeout=2)
+    url = prefix + urllib2.quote(url_suffix.encode('utf-8'))
+    response = urllib2.urlopen(url, timeout=2)
     data = json.load(response)
     if data["count"] > 0:
         url = random.choice(data["result"])["lrc"]
