@@ -31,7 +31,7 @@ def get_lrc_from_kugou(song_name, artist_name):
 def search_from_kugou(song_name, artist_name=None):
     prefix = "http://lib9.service.kugou.com/websearch/index.php?page=1&pagesize=9&cmd=100&keyword="
     if artist_name:
-        url_suffix = '%s-%s' % (song_name, artist_name)
+        url_suffix = '%s-%s' % (artist_name, song_name)
     else:
         url_suffix = '%s' % song_name
     url = prefix + urllib2.quote(url_suffix.encode('utf-8'))
