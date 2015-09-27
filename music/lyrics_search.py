@@ -78,7 +78,7 @@ def krc_hex_xor(data):
 
 
 def krc2lrc(krc):
-    lrc = re.sub(r'<[\d,\s]*>', '', krc)
+    lrc = re.sub(r'<[\d,\-\s]*>', '', krc)
     lrc = re.sub(r'\[(\d+),\s?(\d+)\]', time_replace, lrc)
     return lrc
 
