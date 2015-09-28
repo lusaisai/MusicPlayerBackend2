@@ -13,7 +13,3 @@ class LocalScanTest(unittest.TestCase):
         y = u'音乐9'
         self.assertEqual(x < y, True, 'default compare failed')
         self.assertEqual(alphanumeric_compare(x, y), 1, 'alphanumeric compare failed')
-
-
-if __name__ == '__main__':
-    unittest.main()

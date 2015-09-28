@@ -30,12 +30,20 @@ def artist(request, artist_id):
     return JsonResponse(data)
 
 
-def album(request, album_id):
-    a = get_object_or_404(Album, id=album_id)
-    data = {"album": a.name, "songs": []}
-
-    for obj in a.song_set.all():
-        data["songs"].append(obj.pack_data_into_dict())
+def album(request, album_ids):
+    if ',' not in album_ids:
+        a = get_object_or_404(Album, id=album_ids)
+        data = {"album": a.name, "songs": []}
+        for obj in a.song_set.all():
+            data["songs"].append(obj.pack_data_into_dict())
+    else:
+        albums = Album.objects.in_bulk(album_ids.split(','))
+        data = {"albums": []}
+        for obj in albums.values():
+            data["albums"].append({
+                "name": obj.name,
+                "songs": [song.pack_data_into_dict() for song in obj.song_set.all()]
+            })
 
     return JsonResponse(data)
 

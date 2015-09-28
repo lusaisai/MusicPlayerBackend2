@@ -1,0 +1,76 @@
+[
+  {
+    "model": "music.Artist",
+    "fields": {
+      "id": 1,
+      "name": "品冠"
+    }
+  },
+  {
+    "model": "music.Artist",
+    "fields": {
+      "id": 2,
+      "name": "梁静茹"
+    }
+  },
+  {
+    "model": "music.Album",
+    "fields": {
+      "id": 1,
+      "name": "爱到无可救药",
+      "artist_id": 1
+    }
+  },
+  {
+    "model": "music.Album",
+    "fields": {
+      "id": 2,
+      "name": "未拆的礼物",
+      "artist_id": 1
+    }
+  },
+  {
+    "model": "music.Album",
+    "fields": {
+      "id": 3,
+      "name": "勇气",
+      "artist_id": 2
+    }
+  },
+  {
+    "model": "music.Song",
+    "fields": {
+      "id": 1,
+      "name": "Darling",
+      "file_name": "Darling.mp3",
+      "album_id": 1
+    }
+  },
+  {
+    "model": "music.Song",
+    "fields": {
+      "id": 2,
+      "name": "无可救药",
+      "file_name": "无可救药.mp3",
+      "album_id": 1
+    }
+  },
+  {
+    "model": "music.Song",
+    "fields": {
+      "id": 3,
+      "name": "执子之手",
+      "file_name": "黄品冠 - 10.执子之手.m4a",
+      "album_id": 2
+    }
+  },
+  {
+    "model": "music.Song",
+    "fields": {
+      "id": 4,
+      "name": "勇气",
+      "file_name": "勇气.m4a",
+      "album_id": 3
+    }
+  }
+]
