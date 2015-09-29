@@ -31,41 +31,85 @@ class APITest(TestCase):
         }
         self.assertDictEqual(expected, data)
 
+    def test_some_artists(self):
+        data = requests.get(self.prefix + 'artist/1,2/').json()
+        expected = {
+            "artists": [
+                {
+                    "name": u"品冠",
+                    "albums": [
+                        {
+                            "id": 1,
+                            "name": u"爱到无可救药",
+                            "pinyinName": "aidaowukejiuyao"
+                        },
+                        {
+                            "id": 2,
+                            "name": u"未拆的礼物",
+                            "pinyinName": "weichaidiliwu"
+                        }
+                    ]
+                },
+                {
+                    "name": u"梁静茹",
+                    "albums": [
+                        {
+                            "id": 3,
+                            "name": u"勇气",
+                            "pinyinName": "yongqi"
+                        }
+                    ]
+                }
+            ]
+        }
+        self.assertDictEqual(expected, data)
+
     def test_an_artist(self):
         data = requests.get(self.prefix + 'artist/1/').json()
         expected = {
-            "artist": u"品冠",
-            "albums": [
+            "artists": [
                 {
-                    "id": 1,
-                    "name": u"爱到无可救药",
-                    "pinyinName": "aidaowukejiuyao"
-                },
-                {
-                    "id": 2,
-                    "name": u"未拆的礼物",
-                    "pinyinName": "weichaidiliwu"
+                    "name": u"品冠",
+                    "albums": [
+                        {
+                            "id": 1,
+                            "name": u"爱到无可救药",
+                            "pinyinName": "aidaowukejiuyao"
+                        },
+                        {
+                            "id": 2,
+                            "name": u"未拆的礼物",
+                            "pinyinName": "weichaidiliwu"
+                        }
+                    ]
                 }
             ]
         }
         self.assertDictEqual(expected, data)
 
     def test_no_artist(self):
-        r = requests.get(self.prefix + 'artist/10/')
-        self.assertEqual(404, r.status_code)
+        data = requests.get(self.prefix + 'artist/10/').json()
+        expected = {
+            "artists": []
+        }
+        self.assertDictEqual(expected, data)
 
     def test_an_album(self):
         data = requests.get(self.prefix + 'album/3/').json()
         expected = {
-            "album": u"勇气",
-            "songs": [
+            "albums": [
                 {
-                    "id": 4,
                     "name": u"勇气",
-                    "artistName": u"梁静茹",
-                    "albumName": u"勇气",
-                    "pinyinName": "yongqi",
-                    "url": MUSIC_RESOURCE_HTTP_PREFIX + u"梁静茹/勇气/勇气.m4a"
+                    "songs": [
+                        {
+                            "id": 4,
+                            "name": u"勇气",
+                            "artistName": u"梁静茹",
+                            "albumName": u"勇气",
+                            "pinyinName": "yongqi",
+                            "url": MUSIC_RESOURCE_HTTP_PREFIX + u"梁静茹/勇气/勇气.m4a"
+                        }
+                    ]
                 }
             ]
         }
@@ -106,8 +150,11 @@ class APITest(TestCase):
         self.assertDictEqual(expected, data)
 
     def test_no_album(self):
-        r = requests.get(self.prefix + 'album/30/')
-        self.assertEqual(404, r.status_code)
+        data = requests.get(self.prefix + 'album/30/').json()
+        expected = {
+            "albums": []
+        }
+        self.assertDictEqual(expected, data)
 
     def test_lyrics(self):
         data1 = requests.get(self.prefix + 'lyrics/4/').json()
