@@ -1,5 +1,5 @@
 # coding=utf-8
-from django.test import TestCase, Client
+from django.test import TestCase
 from music.models import *
 from MusicPlayerBackend2.settings import MUSIC_RESOURCE_HTTP_PREFIX
 import json
@@ -7,9 +7,8 @@ import json
 
 # Create your tests here.
 class APITest(TestCase):
-    def setUp(self):
-        self.client = Client()
-        self.maxDiff = None
+    @classmethod
+    def setUpTestData(cls):
         Artist.objects.bulk_create([
             Artist(id=1, name=u"品冠"),
             Artist(id=2, name=u"梁静茹")
@@ -30,8 +29,16 @@ class APITest(TestCase):
             Poem(content=u"今宵酒醒何处 杨柳岸 晚风 残月", poet=u"柳永")
         ])
 
+    def setUp(self):
+        self.maxDiff = None
+
     def tearDown(self):
         pass
+
+    def test_home_page(self):
+        response = self.client.get('/')
+        self.assertEqual(302, response.status_code)
+        self.assertEqual('http://testserver/static/index.html', response.url)
 
     def test_random_poem(self):
         response = self.client.get('/randompoem/')
@@ -41,7 +48,6 @@ class APITest(TestCase):
 
     def test_all_artists(self):
         response = self.client.get('/artist/')
-        data = json.loads(response.content)
         expected = {
             "artists": [
                 {
@@ -56,7 +62,7 @@ class APITest(TestCase):
                 }
             ]
         }
-        self.assertDictEqual(expected, data)
+        self.assertJSONEqual(response.content, expected)
 
     def test_some_artists(self):
         response = self.client.get('/artist/1,2/')
@@ -195,8 +201,8 @@ class APITest(TestCase):
         response = self.client.get('/reloadlyrics/4/')
         data2 = json.loads(response.content)
 
-        self.assertIn(u"我们都需要勇气", data1["content"])
-        self.assertIn(u"我们都需要勇气", data2["content"])
+        self.assertIn("content", data1)
+        self.assertIn("content", data2)
 
     def test_random_songs(self):
         response = self.client.get('/randomsongs/2/')
