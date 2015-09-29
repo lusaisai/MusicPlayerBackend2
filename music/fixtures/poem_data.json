@@ -303,7 +303,7 @@
   {
     "model" : "music.Poem",
     "fields": {
-      "content": "今宵酒醒何处 杨柳岸 晚风残月",
+      "content": "今宵酒醒何处 杨柳岸 晚风 残月",
       "poet": "柳永"
     }
   },

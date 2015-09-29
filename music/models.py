@@ -96,6 +96,12 @@ class Poem(models.Model):
     content = models.TextField()
     poet = models.CharField(max_length=100)
 
+    def pack_data_into_dict(self):
+        return {
+            "content": self.content,
+            "poet": self.poet
+        }
+
     def __str__(self):
         return self.content
 

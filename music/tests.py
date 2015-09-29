@@ -13,6 +13,11 @@ class APITest(TestCase):
     def tearDown(self):
         pass
 
+    def test_random_poem(self):
+        data = requests.get(self.prefix + 'randompoem/').json()
+        self.assertGreater(len(data["content"]), 0)
+        self.assertGreater(len(data["poet"]), 0)
+
     def test_all_artists(self):
         data = requests.get(self.prefix + 'artist/').json()
         expected = {

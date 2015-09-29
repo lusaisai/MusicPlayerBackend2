@@ -75,3 +75,8 @@ def lyrics(request, song_id, need_reloaded=False):
 
 def reload_lyrics(request, song_id):
     return lyrics(request, song_id, True)
+
+
+def random_poem(request):
+    poem = Poem.objects.order_by('?').first()
+    return JsonResponse(poem.pack_data_into_dict())

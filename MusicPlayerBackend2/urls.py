@@ -25,5 +25,6 @@ urlpatterns = [
     url(r'^lyrics/(\d+)/$', views.lyrics),
     url(r'^reloadlyrics/(\d+)/$', views.reload_lyrics),
     url(r'^randomsongs/(\d+)/$', views.random_songs),
+    url(r'^randompoem/$', views.random_poem),
     url(r'^admin/', include(admin.site.urls)),
 ]
