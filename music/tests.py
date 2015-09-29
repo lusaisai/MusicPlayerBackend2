@@ -1,25 +1,47 @@
 # coding=utf-8
-from django.test import TestCase
-import requests
+from django.test import TestCase, Client
+from music.models import *
 from MusicPlayerBackend2.settings import MUSIC_RESOURCE_HTTP_PREFIX
+import json
 
 
 # Create your tests here.
 class APITest(TestCase):
     def setUp(self):
-        self.prefix = 'http://localhost:8000/'
+        self.client = Client()
         self.maxDiff = None
+        Artist.objects.bulk_create([
+            Artist(id=1, name=u"品冠"),
+            Artist(id=2, name=u"梁静茹")
+        ])
+        Album.objects.bulk_create([
+            Album(id=1, name=u"爱到无可救药", artist_id=1),
+            Album(id=2, name=u"未拆的礼物", artist_id=1),
+            Album(id=3, name=u"勇气", artist_id=2)
+        ])
+        Song.objects.bulk_create([
+            Song(id=1, name=u"Darling", file_name=u"Darling.mp3", album_id=1),
+            Song(id=2, name=u"无可救药", file_name=u"无可救药.mp3", album_id=1),
+            Song(id=3, name=u"执子之手", file_name=u"黄品冠 - 10.执子之手.m4a", album_id=2),
+            Song(id=4, name=u"勇气", file_name=u"勇气.m4a", album_id=3)
+        ])
+        Poem.objects.bulk_create([
+            Poem(content=u"多情自古伤离别 更那堪 冷落清秋节", poet=u"柳永"),
+            Poem(content=u"今宵酒醒何处 杨柳岸 晚风 残月", poet=u"柳永")
+        ])
 
     def tearDown(self):
         pass
 
     def test_random_poem(self):
-        data = requests.get(self.prefix + 'randompoem/').json()
+        response = self.client.get('/randompoem/')
+        data = json.loads(response.content)
         self.assertGreater(len(data["content"]), 0)
         self.assertGreater(len(data["poet"]), 0)
 
     def test_all_artists(self):
-        data = requests.get(self.prefix + 'artist/').json()
+        response = self.client.get('/artist/')
+        data = json.loads(response.content)
         expected = {
             "artists": [
                 {
@@ -37,7 +59,8 @@ class APITest(TestCase):
         self.assertDictEqual(expected, data)
 
     def test_some_artists(self):
-        data = requests.get(self.prefix + 'artist/1,2/').json()
+        response = self.client.get('/artist/1,2/')
+        data = json.loads(response.content)
         expected = {
             "artists": [
                 {
@@ -70,7 +93,8 @@ class APITest(TestCase):
         self.assertDictEqual(expected, data)
 
     def test_an_artist(self):
-        data = requests.get(self.prefix + 'artist/1/').json()
+        response = self.client.get('/artist/1/')
+        data = json.loads(response.content)
         expected = {
             "artists": [
                 {
@@ -93,14 +117,16 @@ class APITest(TestCase):
         self.assertDictEqual(expected, data)
 
     def test_no_artist(self):
-        data = requests.get(self.prefix + 'artist/10/').json()
+        response = self.client.get('/artist/10/')
+        data = json.loads(response.content)
         expected = {
             "artists": []
         }
         self.assertDictEqual(expected, data)
 
     def test_an_album(self):
-        data = requests.get(self.prefix + 'album/3/').json()
+        response = self.client.get('/album/3/')
+        data = json.loads(response.content)
         expected = {
             "albums": [
                 {
@@ -121,7 +147,8 @@ class APITest(TestCase):
         self.assertDictEqual(expected, data)
 
     def test_some_albums(self):
-        data = requests.get(self.prefix + 'album/2,3/').json()
+        response = self.client.get('/album/2,3/')
+        data = json.loads(response.content)
         expected = {
             "albums": [
                 {
@@ -155,20 +182,26 @@ class APITest(TestCase):
         self.assertDictEqual(expected, data)
 
     def test_no_album(self):
-        data = requests.get(self.prefix + 'album/30/').json()
+        response = self.client.get('/album/30/')
+        data = json.loads(response.content)
         expected = {
             "albums": []
         }
         self.assertDictEqual(expected, data)
 
     def test_lyrics(self):
-        data1 = requests.get(self.prefix + 'lyrics/4/').json()
-        data2 = requests.get(self.prefix + 'reloadlyrics/4/').json()
+        response = self.client.get('/lyrics/4/')
+        data1 = json.loads(response.content)
+        response = self.client.get('/reloadlyrics/4/')
+        data2 = json.loads(response.content)
+
         self.assertIn(u"我们都需要勇气", data1["content"])
         self.assertIn(u"我们都需要勇气", data2["content"])
 
     def test_random_songs(self):
-        data = requests.get(self.prefix + 'randomsongs/2/').json()
+        response = self.client.get('/randomsongs/2/')
+        data = json.loads(response.content)
+
         self.assertEqual(2, len(data["songs"]))
         one_song = data["songs"][0]
         self.assertIn("id", one_song)
