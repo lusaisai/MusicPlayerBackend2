@@ -107,7 +107,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 
 ENVIRONMENT = "production"
 STATICFILES_DIRS = (
-    r'/home/lusaisai/projects/MusicPlayer',
+    r'/home/lusaisai/projects/MusicPlayer/dist',
 )
 
 #  Development settings
