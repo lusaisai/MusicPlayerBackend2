@@ -109,25 +109,12 @@ ENVIRONMENT = "production"
 STATICFILES_DIRS = (
     r'/home/lusaisai/projects/MusicPlayer/dist',
 )
-
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'file': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'filename': os.path.join(BASE_DIR, "logs/log.txt"),
-        },
-    },
-    'loggers': {
-        'django.db.backends': {
-            'handlers': ['file'],
-            'level': 'DEBUG',
-            'propagate': True,
-        },
-    },
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+    }
 }
+CACHES_TIMEOUT = 60 * 60 * 24
 
 #  Development settings
 if socket.gethostname() == "WindowSai":
@@ -145,3 +132,24 @@ if socket.gethostname() == "WindowSai":
     STATICFILES_DIRS = (
         r'C:\projects\MusicPlayer',
     )
+    LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': False,
+        'handlers': {
+            'file': {
+                'level': 'DEBUG',
+                'class': 'logging.FileHandler',
+                'filename': os.path.join(BASE_DIR, "logs/log.txt"),
+            },
+        },
+        'loggers': {
+            'django.db.backends': {
+                'handlers': ['file'],
+                'level': 'DEBUG',
+                'propagate': True,
+            },
+        },
+    }
+    CACHES_TIMEOUT = 0
+
+

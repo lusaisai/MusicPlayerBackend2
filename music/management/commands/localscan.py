@@ -3,7 +3,7 @@ from django.core.management.base import BaseCommand
 from music.models import *
 from os import listdir, chdir
 from os.path import isfile, isdir
-from MusicPlayerBackend2 import settings
+from django.conf import settings
 import re
 
 

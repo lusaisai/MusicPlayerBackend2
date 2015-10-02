@@ -1,5 +1,5 @@
 from django.db import models
-from MusicPlayerBackend2.settings import MUSIC_RESOURCE_HTTP_PREFIX
+from django.conf import settings
 from pypinyin import lazy_pinyin
 
 
@@ -98,7 +98,7 @@ class Song(models.Model):
     def _get_url(self):
         album = self.album
         artist = album.artist
-        return MUSIC_RESOURCE_HTTP_PREFIX + "/".join([artist.name, album.name, self.file_name])
+        return settings.MUSIC_RESOURCE_HTTP_PREFIX + "/".join([artist.name, album.name, self.file_name])
     url = property(_get_url)
 
     def pack_data_into_dict(self):

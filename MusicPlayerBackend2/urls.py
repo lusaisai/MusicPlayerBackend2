@@ -17,6 +17,7 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from music import views
 
+
 urlpatterns = [
     url(r'^$', views.home),
     url(r'^artist/$', views.artists),

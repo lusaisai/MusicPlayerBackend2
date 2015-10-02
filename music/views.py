@@ -1,8 +1,9 @@
 from django.http import JsonResponse
 from music.models import *
-from MusicPlayerBackend2 import settings
+from django.conf import settings
 from django.shortcuts import redirect, get_object_or_404
 from lyrics_search import *
+from django.views.decorators.cache import cache_page
 
 
 # Create your views here.
@@ -10,6 +11,7 @@ def home(request):
     return redirect(settings.STATIC_URL + "index.html")
 
 
+@cache_page(settings.CACHES_TIMEOUT)
 def artists(request):
     data = {"artists": []}
 
@@ -19,6 +21,7 @@ def artists(request):
     return JsonResponse(data)
 
 
+@cache_page(settings.CACHES_TIMEOUT)
 def artist(request, artist_ids):
     objs = Artist.objects.pack_into_list(artist_ids.split(','))
     data = {"artists": objs}
@@ -26,6 +29,7 @@ def artist(request, artist_ids):
     return JsonResponse(data)
 
 
+@cache_page(settings.CACHES_TIMEOUT)
 def album(request, album_ids):
     albums = Album.objects.pack_into_list(album_ids.split(','))
     data = {"albums": albums}
