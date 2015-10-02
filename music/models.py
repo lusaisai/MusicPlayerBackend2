@@ -4,8 +4,22 @@ from pypinyin import lazy_pinyin
 
 
 # Create your models here.
+class ArtistManager(models.Manager):
+    def pack_into_list(self, ids):
+        data = []
+        artists = self.model.objects.prefetch_related("album_set").in_bulk(ids)
+        for artist in artists.values():
+            data.append({
+                "name": artist.name,
+                "albums": [album.pack_data_into_dict() for album in artist.album_set.all()]
+            })
+
+        return data
+
+
 class Artist(models.Model):
     name = models.CharField(max_length=100)
+    objects = ArtistManager()
 
     def _get_pinyin_name(self):
         return "".join(lazy_pinyin(self.name))
@@ -23,11 +37,25 @@ class Artist(models.Model):
 
     def __unicode__(self):
         return self.name
+
+
+class AlbumManager(models.Manager):
+    def pack_into_list(self, ids):
+        data = []
+        albums = self.model.objects.select_related('artist').prefetch_related("song_set").in_bulk(ids)
+        for album in albums.values():
+            data.append({
+                "name": album.name,
+                "songs": [song.pack_data_into_dict() for song in album.song_set.all()]
+            })
+
+        return data
 
 
 class Album(models.Model):
     name = models.CharField(max_length=100)
     artist = models.ForeignKey(Artist)
+    objects = AlbumManager()
 
     def _get_pinyin_name(self):
         return "".join(lazy_pinyin(self.name))
@@ -45,12 +73,23 @@ class Album(models.Model):
 
     def __unicode__(self):
         return self.name
+
+
+class SongManager(models.Manager):
+    def pack_into_list(self, ids):
+        data = []
+        songs = self.model.objects.select_related("album__artist").in_bulk(ids)
+        for song in songs.values():
+            data.append(song.pack_data_into_dict())
+
+        return data
 
 
 class Song(models.Model):
     name = models.CharField(max_length=100)
     file_name = models.CharField(max_length=100)
     album = models.ForeignKey(Album)
+    objects = SongManager()
 
     def _get_pinyin_name(self):
         return "".join(lazy_pinyin(self.name))

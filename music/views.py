@@ -20,27 +20,15 @@ def artists(request):
 
 
 def artist(request, artist_ids):
-    objs = Artist.objects.in_bulk(artist_ids.split(','))
-
-    data = {"artists": []}
-
-    for obj in objs.values():
-        data["artists"].append({
-            "name": obj.name,
-            "albums": [a.pack_data_into_dict() for a in obj.album_set.all()]
-        })
+    objs = Artist.objects.pack_into_list(artist_ids.split(','))
+    data = {"artists": objs}
 
     return JsonResponse(data)
 
 
 def album(request, album_ids):
-    albums = Album.objects.in_bulk(album_ids.split(','))
-    data = {"albums": []}
-    for obj in albums.values():
-        data["albums"].append({
-            "name": obj.name,
-            "songs": [song.pack_data_into_dict() for song in obj.song_set.all()]
-        })
+    albums = Album.objects.pack_into_list(album_ids.split(','))
+    data = {"albums": albums}
 
     return JsonResponse(data)
 
@@ -48,10 +36,8 @@ def album(request, album_ids):
 def random_songs(request, number):
     number = int(number)
     data = {"songs": []}
-    songs = Song.objects.order_by('?')[:number]
-
-    for song in songs:
-        data["songs"].append(song.pack_data_into_dict())
+    ids = [song.id for song in Song.objects.only("id").order_by('?')[:number]]
+    data["songs"] = Song.objects.pack_into_list(ids)
 
     return JsonResponse(data)
 
