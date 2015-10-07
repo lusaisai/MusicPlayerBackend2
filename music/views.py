@@ -3,7 +3,7 @@ from music.models import *
 from django.conf import settings
 from django.shortcuts import redirect, get_object_or_404
 from lyrics_search import *
-from django.views.decorators.cache import cache_page
+from django.views.decorators.cache import cache_page, cache_control
 
 
 # Create your views here.
@@ -11,37 +11,34 @@ def home(request):
     return redirect(settings.STATIC_URL + "index.html")
 
 
+@cache_control(no_cache=True)  # cache on server-side only
 @cache_page(settings.CACHES_TIMEOUT)
 def artists(request):
-    data = {"artists": []}
-
-    for obj in Artist.objects.all():
-        data["artists"].append(obj.pack_data_into_dict())
+    data = {"artists": [obj.pack_data_into_dict() for obj in Artist.objects.all()]}
 
     return JsonResponse(data)
 
 
+@cache_control(no_cache=True)
 @cache_page(settings.CACHES_TIMEOUT)
 def artist(request, artist_ids):
-    objs = Artist.objects.pack_into_list(artist_ids.split(','))
-    data = {"artists": objs}
+    data = {"artists": Artist.objects.pack_into_list(artist_ids.split(','))}
 
     return JsonResponse(data)
 
 
+@cache_control(no_cache=True)
 @cache_page(settings.CACHES_TIMEOUT)
 def album(request, album_ids):
-    albums = Album.objects.pack_into_list(album_ids.split(','))
-    data = {"albums": albums}
+    data = {"albums": Album.objects.pack_into_list(album_ids.split(','))}
 
     return JsonResponse(data)
 
 
 def random_songs(request, number):
     number = int(number)
-    data = {"songs": []}
     ids = [song.id for song in Song.objects.only("id").order_by('?')[:number]]
-    data["songs"] = Song.objects.pack_into_list(ids)
+    data = {"songs": Song.objects.pack_into_list(ids)}
 
     return JsonResponse(data)
 
