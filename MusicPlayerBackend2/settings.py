@@ -150,6 +150,7 @@ if socket.gethostname() == "WindowSai":
             },
         },
     }
+    LOGGING = {}
     CACHES_TIMEOUT = 0
 
 

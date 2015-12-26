@@ -216,3 +216,6 @@ class APITest(TestCase):
         self.assertIn("albumName", one_song)
         self.assertIn("artistName", one_song)
         self.assertIn("url", one_song)
+
+    def test_random_search_songs(self):
+        response = self.client.get('/randomsongs/2/?q=')

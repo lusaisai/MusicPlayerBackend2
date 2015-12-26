@@ -1,3 +1,4 @@
+from random import shuffle
 from django.http import JsonResponse
 from music.models import *
 from django.conf import settings
@@ -38,7 +39,9 @@ def album(request, album_ids):
 def random_songs(request, number):
     number = int(number)
     ids = [song.id for song in Song.objects.only("id").order_by('?')[:number]]
-    data = {"songs": Song.objects.pack_into_list(ids)}
+    songs = Song.objects.pack_into_list(ids)
+    shuffle(songs)
+    data = {"songs": songs}
 
     return JsonResponse(data)
 
